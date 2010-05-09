@@ -1,5 +1,6 @@
 Folio::Application.routes.draw do |map|
   resources :imgs
+  match 'img/picture/:id' => 'imgs#picture'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

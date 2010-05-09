@@ -1,27 +1,5 @@
 <h1>Listing imgs</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>By</th>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @imgs.each do |img| %>
-  <tr>
-    <td><%= img.name %></td>
-    <td><%= img.by %></td>
-    <td><%= img.description %></td>
-    <td><%= link_to 'Show', img %></td>
-    <td><%= link_to 'Edit', edit_img_path(img) %></td>
-    <td><%= link_to 'Destroy', img, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
+<%= render :partial => @imgs %>
 
 <%= link_to 'New img', new_img_path %>

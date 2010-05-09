@@ -1,19 +1,15 @@
-<% form_for(@img) do |f| %>
+<% form_for(@img, :html => { :multipart => true }) do |f| %>
   <%= f.error_messages %>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.label :uploaded_picture, "upload a picture" %><br />
+    <%= f.file_field :uploaded_picture %>
   </div>
   <div class="field">
-    <%= f.label :by %><br />
-    <%= f.text_field :by %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
+    <%= f.label :comment %><br />
+    <%= f.text_area :comment %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "start upload" %>
   </div>
 <% end %>

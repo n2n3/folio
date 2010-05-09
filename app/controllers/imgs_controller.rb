@@ -10,15 +10,17 @@ class ImgsController < ApplicationController
     end
   end
 
+  def picture
+    @img = Img.find(params[:id])
+    send_data(@img.data,
+              :filename => @img.name,
+              :type => @img.content_type,
+              :disposition => "inline")
+  end
+
   # GET /imgs/1
-  # GET /imgs/1.xml
   def show
     @img = Img.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @img }
-    end
   end
 
   # GET /imgs/new
@@ -44,7 +46,7 @@ class ImgsController < ApplicationController
 
     respond_to do |format|
       if @img.save
-        format.html { redirect_to(@img, :notice => 'Img was successfully created.') }
+        format.html { redirect_to(@img, :notice => 'Img was successfully uploaded.') }
         format.xml  { render :xml => @img, :status => :created, :location => @img }
       else
         format.html { render :action => "new" }
