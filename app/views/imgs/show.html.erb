@@ -1,0 +1,18 @@
+<p>
+  <b>Name:</b>
+  <%= @img.name %>
+</p>
+
+<p>
+  <b>By:</b>
+  <%= @img.by %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @img.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_img_path(@img) %> |
+<%= link_to 'Back', imgs_path %>
