@@ -1,4 +1,15 @@
-<%= render :partial => @img %>
+<% if @prev %>
+  <%= link_to '<', img_path(@prev) %>
+<% else %>
+  <%= link_to '<', img_path(@img.id-1) %>
+<% end %>
+<% if @next %>
+  <%= link_to '>', img_path(@next) %>
+<% else %>
+  <%= link_to '>', img_path(@img.id+1) %>
+<% end %>
 
 <%= link_to 'Edit', edit_img_path(@img) %> |
 <%= link_to 'Back', imgs_path %>
+
+<%= render :partial => @img %>

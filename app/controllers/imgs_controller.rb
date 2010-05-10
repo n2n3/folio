@@ -2,12 +2,6 @@ class ImgsController < ApplicationController
   # GET /imgs
   # GET /imgs.xml
   def index
-    @imgs = Img.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @imgs }
-    end
   end
 
   def picture
@@ -20,7 +14,14 @@ class ImgsController < ApplicationController
 
   # GET /imgs/1
   def show
+    @count = Img.last.id
     @img = Img.find(params[:id])
+    if @img.id == 1
+      @prev = @count
+      else if @img.id == @count
+        @next = 1
+      end
+    end
   end
 
   # GET /imgs/new

@@ -1,4 +1,6 @@
 Folio::Application.routes.draw do |map|
+  resources :users
+
   resources :imgs
   match 'img/picture/:id' => 'imgs#picture'
 
