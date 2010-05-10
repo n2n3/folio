@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100509132757) do
+ActiveRecord::Schema.define(:version => 20100510133558) do
 
   create_table "imgs", :force => true do |t|
     t.string   "comment"
@@ -17,6 +17,14 @@ ActiveRecord::Schema.define(:version => 20100509132757) do
     t.string   "by"
     t.string   "content_type"
     t.binary   "data",         :limit => 1048576
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "name"
+    t.string   "hashed_password"
+    t.string   "salt"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
