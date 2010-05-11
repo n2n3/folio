@@ -1,8 +1,15 @@
 Folio::Application.routes.draw do |map|
+  root :to => "imgs#index"
+
   resources :users
 
   resources :imgs
-  match 'img/picture/:id' => 'imgs#picture'
+
+  match 'imgs/picture/:id' => 'imgs#picture'
+  match 'admin' => 'admin#index'
+  match 'admin/:action' => 'admin#:action'
+  match 'login' => 'admin#login'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

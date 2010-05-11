@@ -43,6 +43,12 @@ class ImgsController < ApplicationController
   # POST /imgs
   # POST /imgs.xml
   def create
+    if session[:user_id]
+      user = User.find_by_id(session[:user_id])
+      params[:img][:by] = user.id
+    else
+      params[:img][:by] = cookies
+    end
     @img = Img.new(params[:img])
 
     respond_to do |format|
