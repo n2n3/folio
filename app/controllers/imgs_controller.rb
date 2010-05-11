@@ -1,4 +1,6 @@
 class ImgsController < ApplicationController
+  before_filter :cookies_required, :except => [:cookies_test]
+
   # GET /imgs
   # GET /imgs.xml
   def index
@@ -88,5 +90,22 @@ class ImgsController < ApplicationController
       format.html { redirect_to(imgs_url) }
       format.xml  { head :ok }
     end
+  end
+
+  def cookies_test
+    if request.cookies[:_folio_session].blank?
+      render :template => 'cookies_required'
+    else
+      redirect_to(session[:return_to] || { :action => 'index' })
+      session[:return_to] = nil
+    end
+  end
+
+  private
+
+  def cookies_required
+    return unless request.cookies[:_folio_session].blank?
+    session[:return_to] = request.request_uri
+    redirect_to :action => "cookies_test"
   end
 end
