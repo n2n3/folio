@@ -47,6 +47,14 @@ class UsersController < ApplicationController
         flash[:notice] = "User #{@user.name} was successfully created."
         format.html { redirect_to(:action => 'index') }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
+        unless session[:imgs].empty?
+          session[:imgs].each do |i|
+            img = Img.find_by_id(i)
+            img.by = @user.id
+            img.save
+          end
+          session[:img] = []
+        end
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
