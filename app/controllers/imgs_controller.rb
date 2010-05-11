@@ -48,8 +48,6 @@ class ImgsController < ApplicationController
     if session[:user_id]
       user = User.find_by_id(session[:user_id])
       params[:img][:by] = user.id
-    else
-      params[:img][:by] = cookies
     end
     @img = Img.new(params[:img])
 
@@ -57,6 +55,12 @@ class ImgsController < ApplicationController
       if @img.save
         format.html { redirect_to(@img, :notice => 'Img was successfully uploaded.') }
         format.xml  { render :xml => @img, :status => :created, :location => @img }
+        unless session[:user_id]
+          unless session[:imgs]
+            session[:imgs] = []
+          end
+          session[:imgs].push(@img.id)
+        end
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @img.errors, :status => :unprocessable_entity }
@@ -93,7 +97,7 @@ class ImgsController < ApplicationController
   end
 
   def cookies_test
-    if request.cookies[:_folio_session].blank?
+    if request.cookies["_folio_session"].blank?
       render :template => 'cookies_required'
     else
       redirect_to(session[:return_to] || { :action => 'index' })
@@ -104,8 +108,5 @@ class ImgsController < ApplicationController
   private
 
   def cookies_required
-    return unless request.cookies[:_folio_session].blank?
-    session[:return_to] = request.request_uri
-    redirect_to :action => "cookies_test"
   end
 end
