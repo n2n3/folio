@@ -1,0 +1,7 @@
+#slideshow #slidesContainer {
+  margin: 0, auto;
+  width: 560px;
+  height: 263px;
+  overflow: auto;  /* allows scollbar */
+  position: relative;
+}
