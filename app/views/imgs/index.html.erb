@@ -3,3 +3,15 @@
 <% if @user %>
   <%= link_to 'mine', :controller => 'admin' %>
 <% end %>
+
+<!-- Slideshow HTML -->
+<div id="slideshow">
+  <div id="slidesContainer">
+    <% @imgs.each do |i| %>
+    <div class="slide">
+      <%= render :partial => i %>
+    </div>
+    <% end %>
+  </div>
+</div>
+<!-- Slideshow HTML -->
