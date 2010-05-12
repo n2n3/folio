@@ -10,6 +10,7 @@ Folio::Application.routes.draw do |map|
   match 'admin' => 'admin#index'
   match 'admin/:action' => 'admin#:action'
   match 'login' => 'admin#login'
+  match 'logout' => 'admin#logout'
 
 
   # The priority is based upon order of creation:

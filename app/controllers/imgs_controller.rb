@@ -4,6 +4,9 @@ class ImgsController < ApplicationController
   # GET /imgs
   # GET /imgs.xml
   def index
+    if session[:user_id]
+      @user = User.find(session[:user_id])
+    end
   end
 
   def picture
