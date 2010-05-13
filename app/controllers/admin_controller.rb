@@ -33,6 +33,9 @@ class AdminController < ApplicationController
     @total_pictures = Img.count
   end
 
+  def edit
+  end
+
   def recover
     user = User.find_by_name(params[:name])
     if user

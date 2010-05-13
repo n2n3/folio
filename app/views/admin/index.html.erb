@@ -1,6 +1,7 @@
 <h1>welcome</h1>
 
-we have <%= pluralize(@total_pictures, "picture") %>.
+we have <%= link_to(pluralize(@total_pictures, "picture")), imgs_path %>.
 <%= link_to 'upload', :controller => 'imgs', :action => 'new' %>
-<%= link_to 'destroy', user_path(session[:user_id]), :controller => 'users', :action => 'cancel', :method => :delete %>
+<%= link_to 'destroy', user_path(session[:user_id]), :method => :delete %>
+<%= link_to 'edit', :action => 'edit' %>
 <%= link_to 'logout', :action => 'logout' %>
