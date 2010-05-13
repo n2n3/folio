@@ -30,13 +30,7 @@ class AdminController < ApplicationController
   end
 
   def index
-    @session_id = request.cookies["_folio_session"]
     @total_pictures = Img.count
-  end
-
-  def cancel
-    @user = User.find(session[:user_id])
-    @user.destroy
   end
 
   private

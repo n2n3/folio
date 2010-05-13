@@ -45,9 +45,10 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         flash[:notice] = "User #{@user.name} was successfully created."
-        format.html { redirect_to(:action => 'index') }
+        session[:user_id] = @user.id
+        format.html { redirect_to(:controller => 'admin') }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
-        unless session[:imgs].empty?
+        unless session[:imgs].nil?
           session[:imgs].each do |i|
             img = Img.find_by_id(i)
             img.by = @user.id
@@ -86,7 +87,11 @@ class UsersController < ApplicationController
     @user.destroy
 
     respond_to do |format|
-      format.html { redirect_to(users_url) }
+      format.html do
+        redirect_to imgs_url
+        session[:user_id] = nil
+        flash[:notice] = "account deleted"
+      end
       format.xml  { head :ok }
     end
   end
