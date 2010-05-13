@@ -1,5 +1,5 @@
 class AdminController < ApplicationController
-  before_filter :authorize, :except => [:login, :reset]
+  before_filter :authorize, :except => [:login, :recover]
 
   def login
     if request.post?
@@ -31,6 +31,18 @@ class AdminController < ApplicationController
 
   def index
     @total_pictures = Img.count
+  end
+
+  def recover
+    user = User.find_by_name(params[:name])
+    if user
+      @new_password = Digest::MD5.hexdigest(rand.to_s)
+      user.password= @new_password
+      user.save
+      render :new_password
+    else
+      flash[:notice] = "no such user"
+    end
   end
 
   private
