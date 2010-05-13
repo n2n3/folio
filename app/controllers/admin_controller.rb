@@ -1,11 +1,11 @@
 class AdminController < ApplicationController
-  before_filter :authorize, :except => :login
+  before_filter :authorize, :except => [:login, :reset]
 
   def login
     if request.post?
       user = User.authenticate(params[:name], params[:password])
       if user
-        unless session[:imgs].empty?
+        unless session[:imgs].nil?
           session[:imgs].each do |i|
             img = Img.find_by_id(i)
             img.by = user.id
