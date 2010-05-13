@@ -34,6 +34,11 @@ class AdminController < ApplicationController
     @total_pictures = Img.count
   end
 
+  def cancel
+    @user = User.find(session[:user_id])
+    @user.destroy
+  end
+
   private
   
   def authorize
