@@ -3,8 +3,14 @@
 <head>
   <title>Imgs: <%= controller.action_name %></title>
   <%= stylesheet_link_tag 'scaffold', 'slide' %>
-  <%= javascript_include_tag :all %>
+  <%= javascript_include_tag 'jquery-1.4.2' %>
   <%= csrf_meta_tag %>
+  <script type="text/javascript" charset="utf8">
+    var currentPosition = 0;
+    var slideWidth = 560px;
+    var slides = $('.slide');
+    var numberOfSlides = slides.length;
+  </script>
 </head>
 <body>
 
