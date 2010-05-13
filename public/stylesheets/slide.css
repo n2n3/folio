@@ -1,7 +1,11 @@
+#slideshow {
+  margin: 40px;
+}
+
 #slideshow #slidesContainer {
   margin: 0, auto;
-  width: 560px;
-  height: 263px;
+  width: 760px;
+  height: 300px;
   overflow: auto;  /* allows scollbar */
   position: relative;
 }
@@ -22,14 +26,15 @@
   text-indent:-10000px;
   position:absolute;
   cursor: pointer;
+  margin-top: 40px;
 }
 #leftControl {
   top:0;
   left:0;
-  background:transparent url(img/control_left.jpg) no-repeat 0 0;
+  background:transparent url(../images/sd-left.png) no-repeat 0 0;
 }
 #rightControl {
   top:0;
   right:0;
-  background:transparent url(img/control_right.jpg) no-repeat 0 0;
+  background:transparent url(../images/sd-right.png) no-repeat 0 0;
 }
