@@ -1,5 +1,5 @@
 <%= link_to 'upload', new_img_path %>
-<%= link_to 'slide', img_path(:id => 1) %>
+<%= link_to 'pictures', img_path(:id => 1) %>
 <% unless session[:user_id] %>
   <%= link_to 'login', :controller => 'admin', :action => 'login' %>
 <% end %>
