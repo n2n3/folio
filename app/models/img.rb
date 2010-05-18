@@ -1,7 +1,7 @@
 class Img < ActiveRecord::Base
   validates_format_of :content_type,
                       :with => /^image/,
-                      :message => "-- you can only upload pictures"
+                      :message => "-- we can only upload pictures"
 
   def uploaded_picture=(img_field)
     self.name = base_part_of(img_field.original_filename)

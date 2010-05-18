@@ -2,6 +2,7 @@ Folio::Application.routes.draw do |map|
   root :to => "imgs#index"
 
   resources :users
+  match 'users/update' => 'users#update'
 
   match 'imgs/cookies_test' => 'imgs#cookies_test'
   resources :imgs

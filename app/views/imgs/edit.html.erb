@@ -1,6 +1,16 @@
 <h1>Editing img</h1>
 
-<%= render 'form' %>
+<% form_for(@img, :html => { :multipart => true }) do |f| %>
+  <%= f.error_messages %>
+
+  <div class="field">
+    <%= f.label :comment %><br />
+    <%= f.text_area :comment %>
+  </div>
+  <div class="actions">
+    <%= f.submit "start upload" %>
+  </div>
+<% end %>
 
 <%= link_to 'Show', @img %> |
 <%= link_to 'Back', imgs_path %>

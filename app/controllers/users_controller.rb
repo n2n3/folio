@@ -66,12 +66,12 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.xml
   def update
-    @user = User.find(params[:id])
+    @user = User.find(session[:user_id])
 
     respond_to do |format|
-      if @user.update_attributes(params[:user])
+      if @user.update_attribute('password', params[:password])
         flash[:notice] = "User #{@user.name} was successfully updated."
-        format.html { redirect_to :action => 'index' }
+        format.html { redirect_to :controller => 'admin' }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
