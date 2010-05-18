@@ -1,0 +1,6 @@
+<h2>profile:</h2>
+<% form_tag :controller => 'users', :action => 'update' do %>
+  <%= label_tag "new password:" %>
+  <%= password_field_tag :password %>
+  <%= submit_tag "update" %>
+<% end %>

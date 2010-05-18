@@ -1,0 +1,6 @@
+<h2>recover my password</h2>
+<% form_tag :method => "put", :action => "recover" do %>
+  <%= text_field_tag :name %>
+  <%= password_field_tag :new_password %>
+  <%= submit_tag "recover" %>
+<% end %>
