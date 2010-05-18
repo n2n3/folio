@@ -3,6 +3,10 @@ describe User do
     @user = User.new
   end
 
+  it "returns nil it can't be authenticated" do
+    @user.authenticate("test", "wrong password").should == nil
+  end
+
   after(:each) do
     # this is here as an example, but is not really necessary
     # since each example is run in its own object, instance variables
